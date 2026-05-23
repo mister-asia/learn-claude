@@ -5,7 +5,7 @@ describe('updateClock', () => {
         document.body.innerHTML = '<div id="root"></div>';
         jest.useFakeTimers();
         jest.resetModules();
-        ({ updateClock } = await import('./main'));
+        ({ updateClock } = await import('./updateClock.js'));
     });
 
     afterEach(() => {
