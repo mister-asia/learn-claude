@@ -27,7 +27,9 @@ export default function ClockView() {
                     Аналоговый
                 </button>
             </div>
-            {mode === 'digital' ? <DigitalClock /> : <AnalogClock />}
+            <div className={styles.display}>
+                {mode === 'digital' ? <DigitalClock /> : <AnalogClock />}
+            </div>
         </>
     );
 }
