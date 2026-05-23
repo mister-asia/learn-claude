@@ -1,10 +1,10 @@
-import Clock from '@/components/Clock';
+import Link from 'next/link';
 
 export default function Home() {
     return (
         <main>
             <h1>Привет это claude</h1>
-            <Clock />
+            <Link href="/clock">Открыть часы</Link>
         </main>
     );
 }
