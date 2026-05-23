@@ -3,8 +3,8 @@
 import { useState } from 'react';
 
 import AnalogClock from './AnalogClock';
-import Clock from './Clock';
 import styles from './ClockView.module.css';
+import DigitalClock from './DigitalClock';
 
 type Mode = 'digital' | 'analog';
 
@@ -27,7 +27,7 @@ export default function ClockView() {
                     Аналоговый
                 </button>
             </div>
-            {mode === 'digital' ? <Clock /> : <AnalogClock />}
+            {mode === 'digital' ? <DigitalClock /> : <AnalogClock />}
         </>
     );
 }

@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 
 import { formatTime } from '@/utils/formatTime';
 
-import styles from './Clock.module.css';
+import styles from './DigitalClock.module.css';
 
-export default function Clock() {
+export default function DigitalClock() {
     const [time, setTime] = useState(() => formatTime(new Date()));
 
     useEffect(() => {
