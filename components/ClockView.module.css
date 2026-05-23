@@ -1,0 +1,39 @@
+.toggle {
+    display: flex;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.toggleBtn {
+    padding: 3px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition:
+        background 0.1s,
+        color 0.1s;
+}
+
+.toggleBtn + .toggleBtn {
+    border-left: 1px solid var(--border);
+}
+
+.toggleBtn:hover {
+    background: #21262d;
+    color: var(--text);
+}
+
+.toggleBtnActive {
+    background: var(--accent);
+    color: #fff;
+}
+
+.toggleBtnActive:hover {
+    background: var(--accent-hover);
+    color: #fff;
+}

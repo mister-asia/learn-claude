@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import Clock from '@/components/Clock';
+import ClockView from '@/components/ClockView';
 
 import styles from './page.module.css';
 
@@ -15,7 +15,7 @@ export default function ClockPage() {
                     </Link>
                 </div>
                 <div className={styles.body}>
-                    <Clock />
+                    <ClockView />
                 </div>
             </div>
         </div>
