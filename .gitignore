@@ -1,2 +1,16 @@
+# dependencies
 node_modules/
+
+# Next.js
+.next/
+out/
+
+# testing
 coverage/
+
+# env
+.env*
+!.env.example
+
+# misc
+.DS_Store
