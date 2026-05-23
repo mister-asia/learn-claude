@@ -1,1 +1,35 @@
-export { default as ClockView } from './ClockView';
+'use client';
+
+import { useState } from 'react';
+
+import styles from './Clock.module.css';
+import AnalogClock from './ui/AnalogClock';
+import DigitalClock from './ui/DigitalClock';
+
+type Mode = 'digital' | 'analog';
+
+export function Clock() {
+    const [mode, setMode] = useState<Mode>('digital');
+
+    return (
+        <>
+            <div className={styles.toggle}>
+                <button
+                    className={`${styles.toggleBtn} ${mode === 'digital' ? styles.toggleBtnActive : ''}`}
+                    onClick={() => setMode('digital')}
+                >
+                    Цифровой
+                </button>
+                <button
+                    className={`${styles.toggleBtn} ${mode === 'analog' ? styles.toggleBtnActive : ''}`}
+                    onClick={() => setMode('analog')}
+                >
+                    Аналоговый
+                </button>
+            </div>
+            <div className={styles.display}>
+                {mode === 'digital' ? <DigitalClock /> : <AnalogClock />}
+            </div>
+        </>
+    );
+}

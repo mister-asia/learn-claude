@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { ClockView } from '@/widgets/clock';
+import { Clock } from '@/widgets/clock';
 
 import styles from './page.module.css';
 
@@ -15,7 +15,7 @@ export default function ClockPage() {
                     </Link>
                 </div>
                 <div className={styles.body}>
-                    <ClockView />
+                    <Clock />
                 </div>
             </div>
         </div>
