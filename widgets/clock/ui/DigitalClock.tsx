@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { formatTime } from '@/utils/formatTime';
+import { formatTime } from '@/widgets/clock/lib/formatTime';
 
 import styles from './DigitalClock.module.css';
 

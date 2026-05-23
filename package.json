@@ -45,7 +45,7 @@
     "jest": {
         "testEnvironment": "node",
         "testMatch": [
-            "**/utils/**/*.test.ts"
+            "**/lib/**/*.test.ts"
         ]
     },
     "lint-staged": {
