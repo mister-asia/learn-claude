@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import ClockView from '@/components/ClockView';
+import ClockView from '@/widgets/clock/ClockView';
 
 import styles from './page.module.css';
 
