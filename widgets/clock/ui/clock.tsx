@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 
-import styles from './Clock.module.css';
-import AnalogClock from './ui/AnalogClock';
-import DigitalClock from './ui/DigitalClock';
+import AnalogClock from './analog-clock';
+import styles from './clock.module.css';
+import DigitalClock from './digital-clock';
 
 type Mode = 'digital' | 'analog';
 

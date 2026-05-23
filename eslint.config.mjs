@@ -4,6 +4,7 @@ import nextConfig from 'eslint-config-next';
 import prettierConfig from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import unicorn from 'eslint-plugin-unicorn';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default [
@@ -20,6 +21,7 @@ export default [
             '@typescript-eslint': typescriptPlugin,
             'simple-import-sort': simpleImportSort,
             prettier: prettierPlugin,
+            unicorn,
         },
         rules: {
             ...typescriptPlugin.configs.recommended.rules,
@@ -28,6 +30,13 @@ export default [
             'simple-import-sort/imports': 'error',
             'simple-import-sort/exports': 'error',
             '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+            'unicorn/filename-case': [
+                'error',
+                {
+                    case: 'kebabCase',
+                    ignore: ['^index\\.tsx?$', '^next-env\\.d\\.ts$'],
+                },
+            ],
         },
     },
     {

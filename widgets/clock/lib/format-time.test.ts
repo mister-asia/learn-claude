@@ -1,4 +1,4 @@
-import { formatTime } from './formatTime';
+import { formatTime } from './format-time';
 
 describe('formatTime', () => {
     const makeDate = (h: number, m: number, s: number) => new Date(2024, 0, 1, h, m, s);
