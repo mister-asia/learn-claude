@@ -1,8 +1,7 @@
 import { formatTime } from './formatTime';
 
 describe('formatTime', () => {
-    const makeDate = (h: number, m: number, s: number) =>
-        new Date(2024, 0, 1, h, m, s);
+    const makeDate = (h: number, m: number, s: number) => new Date(2024, 0, 1, h, m, s);
 
     it('отображает время в формате HH:MM:SS', () => {
         expect(formatTime(makeDate(14, 30, 45))).toBe('14:30:45');

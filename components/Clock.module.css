@@ -12,6 +12,14 @@
 }
 
 @keyframes pulse {
-    from { text-shadow: 0 0 20px rgba(120, 80, 255, 0.8), 0 0 60px rgba(120, 80, 255, 0.4); }
-    to   { text-shadow: 0 0 30px rgba(160, 100, 255, 1),  0 0 90px rgba(120, 80, 255, 0.6); }
+    from {
+        text-shadow:
+            0 0 20px rgba(120, 80, 255, 0.8),
+            0 0 60px rgba(120, 80, 255, 0.4);
+    }
+    to {
+        text-shadow:
+            0 0 30px rgba(160, 100, 255, 1),
+            0 0 90px rgba(120, 80, 255, 0.6);
+    }
 }
