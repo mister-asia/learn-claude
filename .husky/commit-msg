@@ -1,0 +1,8 @@
+#!/bin/sh
+msg=$(cat "$1")
+if ! echo "$msg" | grep -qE '^(feat|fix)\(BR-[0-9]{4}\): .+'; then
+  echo "Invalid commit message format."
+  echo "  Expected: feat(BR-0000): message"
+  echo "            fix(BR-0000):  message"
+  exit 1
+fi
