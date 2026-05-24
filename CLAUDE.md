@@ -59,6 +59,14 @@ Large composite UI blocks. May import from `features`, `entities`, `shared`. Eac
 
 User interactions with business value (e.g. copy-to-clipboard, auth, search). Each slice has `ui/`, `lib/` segments and `index.ts` public API.
 
+### Entities (`src/entities/`)
+
+Business domain objects (e.g. user, product, order). Contains data types, API calls, and read-only UI for displaying an entity. May only import from `shared`.
+
+### Shared (`src/shared/`)
+
+Technical primitives with no business context: browser API wrappers, UI kit components, HTTP client, constants. No slice structure — organized by type: `lib/`, `ui/`, `api/`, `config/`.
+
 ### Path Aliases
 
 FSD layers have dedicated TypeScript aliases (defined in `tsconfig.json`):
