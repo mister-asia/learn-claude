@@ -22,7 +22,7 @@ Import rule: a layer can only import from layers **strictly below** it.
 app/          ← Next.js routing only (minimal logic, no business code)
 src/
   views/      ← page-level composition (replaces FSD 'pages' to avoid conflict with /app)
-  widgets/    ← large composite UI blocks
+а г  widgets/    ← large composite UI blocks
   features/   ← user interactions with business value
   entities/   ← business domain objects
   shared/     ← utilities, UI kit, API client
@@ -34,6 +34,11 @@ Each page does one thing — imports and renders a view:
 
 - `app/page.tsx` → renders `<HomeView />` from `@/views/home`
 - `app/clock/page.tsx` → renders `<ClockView />` from `@/views/clock`
+
+**Rule:** when adding a new page, always update both:
+
+1. `src/shared/config/routes.ts` — add a new key to the `ROUTES` object
+2. `src/widgets/navbar/ui/navbar.tsx` — add a new entry to the `links` array
 
 ### Slice Structure
 
