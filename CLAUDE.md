@@ -35,53 +35,29 @@ Each page does one thing — imports and renders a view:
 - `app/page.tsx` → renders `<HomeView />` from `@/views/home`
 - `app/clock/page.tsx` → renders `<ClockView />` from `@/views/clock`
 
+### Slice Structure
+
+Each slice exposes its public API through `index.ts` only — no deep imports from outside.
+
+```
+<slice>/
+  index.ts       — public exports only
+  ui/            — React components + CSS modules
+  lib/           — pure functions and hooks; tested via *.test.ts
+  model/         — state management (if needed)
+```
+
 ### Views (`src/views/`)
 
-Page-level logic and layout. Each slice has `ui/` segment and `index.ts` public API.
-
-```
-src/views/
-  home/
-    ui/home-view.tsx       — home page layout with link to /clock
-    ui/home-view.module.css
-    index.ts               — export { HomeView }
-  clock/
-    ui/clock-view.tsx      — clock page layout, renders <Clock> from widgets
-    ui/clock-view.module.css
-    index.ts               — export { ClockView }
-```
+Page-level layout and composition. Renders widgets, no business logic. Each slice has `ui/` segment and `index.ts` public API.
 
 ### Widgets (`src/widgets/`)
 
-Each widget exposes a public API through `index.tsx` only.
-
-```
-src/widgets/clock/
-  index.tsx              — public export: export { Clock }
-  ui/
-    clock.tsx            — 'use client', toggle state (digital/analog), renders CopyButton
-    clock.module.css
-    analog-clock.tsx     — 'use client', SVG clock with hour/minute/second hands
-    digital-clock.tsx    — 'use client', HH:MM:SS text display
-    digital-clock.module.css
-  lib/
-    format-time.ts       — pure function: formatTime(date: Date): string → "HH:MM:SS"
-    format-time.test.ts  — Jest unit tests
-```
+Large composite UI blocks. May import from `features`, `entities`, `shared`. Each widget exposes a public API through `index.tsx` only.
 
 ### Features (`src/features/`)
 
-User interactions with business value. Each slice has `ui/`, `lib/` segments and `index.ts` public API.
-
-```
-src/features/copy-to-clipboard/
-  index.ts                        — public export: export { CopyButton }
-  ui/
-    copy-button.tsx               — 'use client', button with "Скопировать" / "Скопировано!" feedback
-    copy-button.module.css
-  lib/
-    use-copy-to-clipboard.ts      — hook: useCopyToClipboard(timeout?) → { copy, copied }
-```
+User interactions with business value (e.g. copy-to-clipboard, auth, search). Each slice has `ui/`, `lib/` segments and `index.ts` public API.
 
 ### Path Aliases
 
