@@ -12,29 +12,74 @@ npx jest -t "название теста"   # run a single test by name
 
 ## Architecture
 
-Next.js 16 App Router, TypeScript, CSS Modules. No UI library.
+Next.js 16 App Router, TypeScript, CSS Modules. No UI library. Follows **Feature-Sliced Design (FSD)**.
 
-### Pages
+### FSD Layer Hierarchy
 
-- `app/page.tsx` — home page with a link to `/clock`
-- `app/clock/page.tsx` — clock page, imports `{ Clock }` from `@/widgets/clock`
-
-### Widgets
-
-Feature-based structure. Each widget exposes a public API through `index.tsx` only — internal files are not imported directly from outside the widget.
+Import rule: a layer can only import from layers **strictly below** it.
 
 ```
-widgets/clock/
+app/          ← Next.js routing only (minimal logic, no business code)
+src/
+  views/      ← page-level composition (replaces FSD 'pages' to avoid conflict with /app)
+  widgets/    ← large composite UI blocks
+  features/   ← user interactions with business value
+  entities/   ← business domain objects
+  shared/     ← utilities, UI kit, API client
+```
+
+### Routing Pages (`app/`)
+
+Each page does one thing — imports and renders a view:
+
+- `app/page.tsx` → renders `<HomeView />` from `@/views/home`
+- `app/clock/page.tsx` → renders `<ClockView />` from `@/views/clock`
+
+### Views (`src/views/`)
+
+Page-level logic and layout. Each slice has `ui/` segment and `index.ts` public API.
+
+```
+src/views/
+  home/
+    ui/home-view.tsx       — home page layout with link to /clock
+    ui/home-view.module.css
+    index.ts               — export { HomeView }
+  clock/
+    ui/clock-view.tsx      — clock page layout, renders <Clock> from widgets
+    ui/clock-view.module.css
+    index.ts               — export { ClockView }
+```
+
+### Widgets (`src/widgets/`)
+
+Each widget exposes a public API through `index.tsx` only.
+
+```
+src/widgets/clock/
   index.tsx              — public export: export { Clock }
-  Clock.module.css       — styles for Clock (toggle + display container)
   ui/
-    Clock.tsx            — 'use client', toggle state (digital/analog), renders one of the two below
-    AnalogClock.tsx      — 'use client', SVG clock with hour/minute/second hands
-    DigitalClock.tsx     — 'use client', HH:MM:SS text display
-    DigitalClock.module.css
+    clock.tsx            — 'use client', toggle state (digital/analog)
+    clock.module.css
+    analog-clock.tsx     — 'use client', SVG clock with hour/minute/second hands
+    digital-clock.tsx    — 'use client', HH:MM:SS text display
+    digital-clock.module.css
   lib/
-    formatTime.ts        — pure function: formatTime(date: Date): string → "HH:MM:SS"
-    formatTime.test.ts   — Jest unit tests
+    format-time.ts       — pure function: formatTime(date: Date): string → "HH:MM:SS"
+    format-time.test.ts  — Jest unit tests
+```
+
+### Path Aliases
+
+FSD layers have dedicated TypeScript aliases (defined in `tsconfig.json`):
+
+```
+@/views/*    → src/views/*
+@/widgets/*  → src/widgets/*
+@/features/* → src/features/*
+@/entities/* → src/entities/*
+@/shared/*   → src/shared/*
+@/*          → ./*  (fallback)
 ```
 
 ### Styles
@@ -49,4 +94,5 @@ Jest runs only `**/lib/**/*.test.ts` — pure utility functions, no DOM or compo
 ### Tooling
 
 - ESLint + Prettier with pre-commit hooks via husky + lint-staged
-- `simple-import-sort` enforces import order automatically
+- `simple-import-sort` enforces FSD layer import order (views → widgets → features → entities → shared → relative)
+- `no-restricted-imports` enforces FSD boundary rules per layer (see `eslint.config.mjs`)
