@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { Navbar } from '@/widgets/navbar';
+
 import { ThemeProvider } from '@/shared/ui/theme-provider';
 
 import './globals.css';
@@ -17,7 +19,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <script dangerouslySetInnerHTML={{ __html: themeScript }} />
             </head>
             <body>
-                <ThemeProvider>{children}</ThemeProvider>
+                <ThemeProvider>
+                    <Navbar />
+                    <main>{children}</main>
+                </ThemeProvider>
             </body>
         </html>
     );

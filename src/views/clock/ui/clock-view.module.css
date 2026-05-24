@@ -1,5 +1,5 @@
 .page {
-    min-height: 100vh;
+    min-height: calc(100vh - 48px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,15 +29,6 @@
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.08em;
-}
-
-.back {
-    font-size: 12px;
-    color: var(--text-muted);
-}
-
-.back:hover {
-    color: var(--accent-hover);
 }
 
 .body {

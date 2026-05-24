@@ -1,5 +1,5 @@
 .page {
-    min-height: 100vh;
+    min-height: calc(100vh - 48px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,12 +12,6 @@
     border-radius: 6px;
     background: var(--surface);
     padding: 32px;
-}
-
-.toolbar {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 16px;
 }
 
 .title {
