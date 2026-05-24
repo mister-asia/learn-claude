@@ -2,6 +2,9 @@
 
 import { useState } from 'react';
 
+import { CopyButton } from '@/features/copy-to-clipboard';
+
+import { formatTime } from '../lib/format-time';
 import AnalogClock from './analog-clock';
 import styles from './clock.module.css';
 import DigitalClock from './digital-clock';
@@ -30,6 +33,7 @@ export function Clock() {
             <div className={styles.display}>
                 {mode === 'digital' ? <DigitalClock /> : <AnalogClock />}
             </div>
+            <CopyButton getValue={() => formatTime(new Date())} />
         </>
     );
 }
