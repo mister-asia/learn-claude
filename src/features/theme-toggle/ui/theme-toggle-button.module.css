@@ -1,12 +1,11 @@
 .btn {
-    padding: 4px 14px;
-    font-size: 12px;
-    font-weight: 500;
-    font-family: var(--font-sans);
-    color: var(--text-muted);
+    padding: 4px 8px;
+    font-size: 14px;
+    line-height: 1;
     background: transparent;
     border: 1px solid var(--border);
     border-radius: 6px;
+    color: var(--text-muted);
     cursor: pointer;
     transition:
         background 0.1s,

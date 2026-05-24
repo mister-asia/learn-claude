@@ -14,6 +14,12 @@
     padding: 32px;
 }
 
+.toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+
 .title {
     font-size: 20px;
     font-weight: 600;
@@ -38,7 +44,7 @@
     font-size: 14px;
     font-weight: 500;
     color: var(--text);
-    background: #21262d;
+    background: var(--interactive-bg);
     border: 1px solid var(--border);
     border-radius: 6px;
     cursor: pointer;
@@ -46,7 +52,7 @@
 }
 
 .button:hover {
-    background: #30363d;
+    background: var(--interactive-bg-hover);
     text-decoration: none;
     color: var(--text);
 }
