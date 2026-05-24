@@ -59,7 +59,7 @@ Each widget exposes a public API through `index.tsx` only.
 src/widgets/clock/
   index.tsx              — public export: export { Clock }
   ui/
-    clock.tsx            — 'use client', toggle state (digital/analog)
+    clock.tsx            — 'use client', toggle state (digital/analog), renders CopyButton
     clock.module.css
     analog-clock.tsx     — 'use client', SVG clock with hour/minute/second hands
     digital-clock.tsx    — 'use client', HH:MM:SS text display
@@ -67,6 +67,20 @@ src/widgets/clock/
   lib/
     format-time.ts       — pure function: formatTime(date: Date): string → "HH:MM:SS"
     format-time.test.ts  — Jest unit tests
+```
+
+### Features (`src/features/`)
+
+User interactions with business value. Each slice has `ui/`, `lib/` segments and `index.ts` public API.
+
+```
+src/features/copy-to-clipboard/
+  index.ts                        — public export: export { CopyButton }
+  ui/
+    copy-button.tsx               — 'use client', button with "Скопировать" / "Скопировано!" feedback
+    copy-button.module.css
+  lib/
+    use-copy-to-clipboard.ts      — hook: useCopyToClipboard(timeout?) → { copy, copied }
 ```
 
 ### Path Aliases
