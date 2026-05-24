@@ -5,11 +5,13 @@ import { usePathname } from 'next/navigation';
 
 import { ThemeToggleButton } from '@/features/theme-toggle';
 
+import { ROUTES } from '@/shared/config';
+
 import styles from './navbar.module.css';
 
 const links = [
-    { href: '/', label: 'Главная' },
-    { href: '/clock', label: 'Часы' },
+    { href: ROUTES.home, label: 'Главная' },
+    { href: ROUTES.clock, label: 'Часы' },
 ];
 
 export function Navbar() {
@@ -17,9 +19,6 @@ export function Navbar() {
 
     return (
         <nav className={styles.nav}>
-            <Link href="/" className={styles.brand}>
-                learn-claude
-            </Link>
             <ul className={styles.links}>
                 {links.map(({ href, label }) => (
                     <li key={href}>

@@ -14,13 +14,6 @@
     padding: 32px;
 }
 
-.title {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 8px;
-}
-
 .description {
     color: var(--text-muted);
     margin-bottom: 24px;

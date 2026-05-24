@@ -8,18 +8,6 @@
     border-bottom: 1px solid var(--border);
 }
 
-.brand {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    white-space: nowrap;
-}
-
-.brand:hover {
-    color: var(--text);
-    text-decoration: none;
-}
-
 .links {
     display: flex;
     list-style: none;
